@@ -17,6 +17,7 @@
 #ifdef _MANAGED
 
 #include "BugTrapNet.h"
+#include <stdexcept>
 
 #pragma managed
 
@@ -52,8 +53,30 @@ namespace IntelleSoft
 
 		inline StackFrameEnumerator::StackFrameEnumerator(Thread^ thread)
 		{
-			this->stackTrace = gcnew StackTrace(thread, true);
-			this->frameIndex = int::MaxValue;
+			throw std::runtime_error("StackFrameEnumerator with a Thread is now Obsolete");
+
+			//// Get the process ID
+			//int processId = Process::GetCurrentProcess()->Id;
+
+			//// Get the thread ID
+			//int threadId = thread->ManagedThreadId;
+
+			//// Create a new stack trace for the specified thread ID
+			//StackTrace^ stackTrace = gcnew StackTrace(processId, true);
+
+			////array<StackFrame^>^ frames = stackTrace->GetFrames();
+			////for each (StackFrame ^ frame in frames) {
+			////	if (frame->GetILOffset() != StackFrame::OFFSET_UNKNOWN) {
+			////		// Get the method name
+			////		String^ methodName = frame->GetMethod()->Name;
+
+			////		// Print the method name to the console
+			////		Console::WriteLine("Method name: " + methodName);
+			////	}
+			////}
+			//
+			//this->stackTrace = gcnew StackTrace(thread, true);
+			//this->frameIndex = int::MaxValue;
 		}
 
 		inline StackFrameEnumerator::StackFrameEnumerator(System::Exception^ exception)

@@ -523,8 +523,8 @@ namespace NetThunks
 			Trace::Close();
 			Trace::Listeners->Clear();
 			Debug::Close();
-			Debug::Listeners->Clear();
-			Debug::Listeners->Add(gcnew DefaultTraceListener());
+			Trace::Listeners->Clear();
+			Trace::Listeners->Add(gcnew DefaultTraceListener());
 		}
 		catch (Exception^ exception)
 		{
